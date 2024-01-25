@@ -12,11 +12,13 @@ Food Delivery application with React and Spring Boot
 
 ## Steps to run
 
-cd client
-npm run dev
+```
+cd client => npm run dev
+```
 
-cd server
-mvn spring-boot:run
+```
+cd server => mvn spring-boot:run
+```
 
 ### Reference Documentation
 
