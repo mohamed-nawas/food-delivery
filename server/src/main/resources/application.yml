@@ -1,0 +1,34 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /food-delivery
+
+spring:
+  application:
+    name: food-delivery
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:fooddeliverydb?createDatabaseIfNotExists=true
+    username: root
+    password: qpon1234
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+# cors
+accessControl:
+  allowedOrigin: "*"
+  allowedMethods: GET,POST,PUT,PATCH,DELETE,OPTIONS
+  maxAge: 3600
+  allowedHeaders: "*"
+
+# security
+token:
+  expirationms: 3600000
+  secret:
+    key: 48a868a4042f634ac04a117f00a87202131dd7c46c4b32c4acb3edc5e15f4511

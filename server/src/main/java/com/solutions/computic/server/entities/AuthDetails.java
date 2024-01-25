@@ -1,0 +1,55 @@
+package com.solutions.computic.server.entities;
+
+import java.util.UUID;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import com.solutions.computic.server.dtos.request.SignupRequestDto;
+import com.solutions.computic.server.enums.RoleType;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Entity
+@NoArgsConstructor
+@Getter
+public class AuthDetails {
+
+    @Transient
+    private static final String AUTH_ID_PREFIX = "AID";
+    @Transient
+    private static final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+
+    @Id
+    private String id;
+    @Enumerated(EnumType.STRING)
+    private RoleType roleType;
+    @Column(nullable = false)
+    private String name;
+    @Column(nullable = false)
+    private String email;
+    @Column(nullable = false)
+    private String pwd;
+
+    public AuthDetails(SignupRequestDto dto) {
+        this.id = AUTH_ID_PREFIX + UUID.randomUUID();
+        this.name = dto.getName();
+        this.email = dto.getEmail();
+        this.pwd = bCryptPasswordEncoder.encode(dto.getPwd());
+        this.roleType = RoleType.USER;
+    }
+
+    public AuthDetails(AuthDetails authDetails) {
+        this.id = authDetails.getId();
+        this.roleType = authDetails.getRoleType();
+        this.name = authDetails.getName();
+        this.email = authDetails.getEmail();
+        this.pwd = authDetails.getPwd();
+    }
+}
