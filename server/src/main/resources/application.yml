@@ -7,18 +7,31 @@ spring:
   application:
     name: food-delivery
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:fooddeliverydb?createDatabaseIfNotExists=true
+    # driver-class-name: org.h2.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # url: jdbc:h2:mem:fooddeliverydb?createDatabaseIfNotExists=true
+    url: jdbc:mysql://localhost:3306/fooddeliverydb?createDatabaseIfNotExist=true
     username: root
-    password: qpon1234
-  h2:
-    console:
-      enabled: true
+    # password: qpon1234
+    password: password
+  # h2:
+  #   console:
+  #     enabled: true
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    # database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
       ddl-auto: update
     show-sql: true
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 1014045813679-f9ss7kvc3uugth4mv8picdmro6uoiqmm.apps.googleusercontent.com
+            client-secret: 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
+            redirectUri: http://localhost:8080/food-delivery/oauth2/callback/google
+            scope: openid,profile,email
 
 # cors
 accessControl:
@@ -32,3 +45,11 @@ token:
   expirationms: 3600000
   secret:
     key: 48a868a4042f634ac04a117f00a87202131dd7c46c4b32c4acb3edc5e15f4511
+
+authorizedRedirectUris: http://localhost:3000/oauth2/redirect
+
+# app:
+#   tokenSecret: 926D96C90030DD58429D2751AC1BDBBC
+#   tokenExpirationMsec: 864000000
+#   authorizedRedirectUris:
+#     - http://localhost:3000/oauth2/redirect
