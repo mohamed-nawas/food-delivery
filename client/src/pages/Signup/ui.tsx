@@ -181,8 +181,8 @@ const SignupUI = (props: SignupUIProps) => {
                     </button>
 
                     <p className="text-center text-sm text-gray-500">
-                        Have an account? Please signin
-                        <a className="underline" href="">Sign in</a>
+                        Have an account?
+                        <a className="underline" href="/login"> Sign in</a>
                     </p>
                 </form>
             </div>

@@ -1,14 +1,12 @@
 import React from 'react';
 
-// import CustomLink from '@/components/CustomLink';
-import Signin from './Signin';
-import Signup from './Signup';
+import CustomLink from '../components/CustomLink';
 
 export default function Home() {
   return (
     <>
       <main>
-        {/* <section className='bg-dark'>
+        <section className='bg-dark'>
           <div className='flex flex-col items-center justify-center min-h-screen text-white layout'>
             <CustomLink href='https://github.com/theodorusclarence/vite-react-tailwind-starter'>
               <h1>Vite React Tailwind Starter</h1>
@@ -30,9 +28,7 @@ export default function Home() {
               </CustomLink>
             </footer>
           </div>
-        </section> */}
-
-        <Signin />
+        </section>
       </main>
     </>
   );

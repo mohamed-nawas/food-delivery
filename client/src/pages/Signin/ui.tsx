@@ -107,12 +107,12 @@ const SigninUI = (props: SigninUIProps) => {
                         onClick={props.handleSubmit}
                         disabled={props.email == "" || props.pwd == ""}
                     >
-                        Sign up
+                        Sign In
                     </button>
 
                     <p className="text-center text-sm text-gray-500">
                         Don't have an account?
-                        <a className="underline" href=""> Sign up</a>
+                        <a className="underline" href="/register"> Sign up</a>
                     </p>
                 </form>
             </div>

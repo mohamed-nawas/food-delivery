@@ -1,7 +1,12 @@
 import React from "react";
 import * as apis from './api';
+import { useAppDispatch } from '../../redux/hooks';
+import { authActions } from '../../redux/auth/authSlice';
+import { useHistory } from 'react-router-dom';
 
 const useSignup = (): [SignupState, SignupHandlers] => {
+    const history = useHistory();
+    const dispatch = useAppDispatch();
     const isMounted = React.useRef<boolean>();
     const [state, setState] = React.useState<SignupState>({
         name: "",
@@ -44,6 +49,8 @@ const useSignup = (): [SignupState, SignupHandlers] => {
             apis.signup(state.name, state.email, state.pwd)
                 .then((data) => {
                     setState((prevState) => ({ ...prevState, errorMsg: "", successMsg: data.data.message }));
+                    dispatch(authActions.login(data.data.data.token))
+                    history.replace("/")
                 })
                 .catch((e) => {
                     setState((prevState) => ({ ...prevState, successMsg: "", errorMsg: e.data.message }));

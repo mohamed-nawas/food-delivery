@@ -1,6 +1,7 @@
 import React from 'react';
-import Routes from './routes/Routes';
+import PrivateRoute from './routes/PrivateRoute';
+import Home from './pages/Home';
 
-export default function App()  {
-  return <Routes />;
+export default function App() {
+  return <PrivateRoute component={Home} />
 }
