@@ -1,30 +1,24 @@
 import React from "react";
 import { Redirect, RouteComponentProps } from 'react-router-dom';
+import { useAppDispatch } from '../redux/hooks';
+import { authActions } from '../redux/auth/authSlice';
 
-export default class OAuth2RedirectHandler extends React.Component<OAuth2RedirectHandlerProps> {
-    constructor(props: OAuth2RedirectHandlerProps) { 
-        super(props);
-    }
+export default function OAuth2RedirectHandler(props: OAuth2RedirectHandlerProps) {
+    const dipatch = useAppDispatch();
 
-    static readonly ACCESS_TOKEN: string = "accessToken";
-
-    getUrlParameter(name: string): string {
+    function getUrlParameter(name: string): string {
         name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
         var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
 
-        var results = regex.exec(this.props.location.search);
+        var results = regex.exec(props.location.search);
         return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-    };
+    }
 
-    render(): React.ReactNode {
-        const token = this.getUrlParameter('token');
-        const error = this.getUrlParameter('error');
-
-        if(token) {
-            return <Redirect to={'/'} />;
-        } else {
-            return <Redirect to={'/login'} />;
-        }
+    if(getUrlParameter('token')) {
+        dipatch(authActions.login(getUrlParameter('token')));
+        return <Redirect to={'/'} />;
+    } else {
+        return <Redirect to={'/login'} />;
     }
 }
 

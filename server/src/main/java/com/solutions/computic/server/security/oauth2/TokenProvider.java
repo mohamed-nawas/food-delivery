@@ -1,11 +1,16 @@
 package com.solutions.computic.server.security.oauth2;
 
 import java.security.Key;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.Claims;
@@ -34,13 +39,19 @@ public class TokenProvider {
     }
 
     public String createToken(Authentication authentication) {
-        UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
+        // UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
+
+        DefaultOidcUser oidcUser = (DefaultOidcUser) authentication.getPrincipal();
+        List<GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
+        UserPrincipal userPrincipal = new UserPrincipal(oidcUser.getSubject(), oidcUser.getEmail(), "", authorities);
+        userPrincipal.setAttributes(oidcUser.getAttributes());
 
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + tokenExpirationMs);
 
         return Jwts.builder()
-                .setSubject((userPrincipal.getId()))
+                // .setSubject((userPrincipal.getId()))
+                .setSubject(userPrincipal.getEmail())
                 .setIssuedAt(new Date())
                 .setExpiration(expiryDate)
                 .signWith(getSigningKey(), SignatureAlgorithm.HS512)

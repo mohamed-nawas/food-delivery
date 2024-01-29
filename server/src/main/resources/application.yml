@@ -30,7 +30,7 @@ spring:
           google:
             client-id: 1014045813679-f9ss7kvc3uugth4mv8picdmro6uoiqmm.apps.googleusercontent.com
             client-secret: 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
-            redirectUri: http://localhost:8080/food-delivery/oauth2/callback/google
+            redirectUri: http://localhost:8080/food-delivery/oauth2/callback/{registrationId}
             scope: openid,profile,email
 
 # cors
@@ -44,7 +44,7 @@ accessControl:
 token:
   expirationms: 3600000
   secret:
-    key: 48a868a4042f634ac04a117f00a87202131dd7c46c4b32c4acb3edc5e15f4511
+    key: vuh6PqHeEV74AagN23BRlV2uEOYvyn2S2C3se2Oj4R6UIVUuxLRXF0m294gq07OjTzPgk6vrq4eX4tcWk5Vbbw==
 
 authorizedRedirectUris: http://localhost:3000/oauth2/redirect
 

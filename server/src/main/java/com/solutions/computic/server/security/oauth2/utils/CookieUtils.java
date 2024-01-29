@@ -6,8 +6,6 @@ import java.util.Optional;
 
 import org.springframework.util.SerializationUtils;
 
-import com.fasterxml.jackson.core.exc.StreamReadException;
-import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.servlet.http.Cookie;
@@ -60,12 +58,12 @@ public class CookieUtils {
     }
 
     public static <T> T deserialize(Cookie cookie, Class<T> cls) {
-        // return cls.cast(SerializationUtils.deserialize(
-        //                 Base64.getUrlDecoder().decode(cookie.getValue())));
-        try {
-            return mapper.readValue(Base64.getUrlDecoder().decode(cookie.getValue()), cls);
-        } catch (IOException e) {
-            return null;
-        }
+        return cls.cast(SerializationUtils.deserialize(
+                        Base64.getUrlDecoder().decode(cookie.getValue())));
+        // try {
+        //     return mapper.readValue(Base64.getUrlDecoder().decode(cookie.getValue()), cls);
+        // } catch (IOException e) {
+        //     return null;
+        // }
     }
 }
