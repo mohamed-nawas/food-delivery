@@ -1,4 +1,5 @@
 import React from "react";
+import GoogleAuthUI from "../Social Auth/Google Auth/ui";
 
 const SignupUI = (props: SignupUIProps) => {
     return (
@@ -13,6 +14,14 @@ const SignupUI = (props: SignupUIProps) => {
 
                 <form action="" className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
                     <p className="text-center text-lg font-medium">Sign up for an account</p>
+
+                    <GoogleAuthUI />
+                    <div className="flex items-center">
+                        <hr className="flex-grow border-t border-gray-800" />
+                        <p className="mx-4 text-sm font-medium text-gray-800 dark:text-white"> Or continue with email </p>
+                        <hr className="flex-grow border-t border-gray-800" />
+                    </div>
+
 
                     <div>
                         <label htmlFor="name" className="sr-only">Name</label>
