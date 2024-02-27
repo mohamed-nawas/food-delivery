@@ -17,7 +17,7 @@ const SigninUI = (props: SigninUIProps) => {
                     <div>
                         <label htmlFor="email" className="sr-only">Email</label>
 
-                        <div className="relative" style={{borderWidth: '2px', borderColor: 'black'}}>
+                        <div className="relative">
                             <input
                                 id="email"
                                 type="email"
@@ -27,7 +27,7 @@ const SigninUI = (props: SigninUIProps) => {
                                 onChange={props.handleEmailChange}
                             />
 
-                            <span className="absolute inset-y-0 inset-x-200 grid place-content-center px-4">
+                            <span className="absolute inset-y-0 right-0 w-1/10 grid place-content-center px-4">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className="h-4 w-4 text-gray-400"
@@ -59,7 +59,7 @@ const SigninUI = (props: SigninUIProps) => {
                                 onChange={props.handlePwdChange}
                             />
 
-                            <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
+                            <span className="absolute inset-y-0 right-0 w-1/10 grid place-content-center px-4">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className="h-4 w-4 text-gray-400"
