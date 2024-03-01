@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import * as apis from './api';
 import { useAppDispatch } from '../../redux/hooks';
 import { authActions} from '../../redux/auth/authSlice';

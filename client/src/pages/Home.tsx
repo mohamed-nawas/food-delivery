@@ -1,8 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 
 import CustomLink from '../components/CustomLink';
 
-export default function Home() {
+export default function Home(): JSX.Element {
   return (
     <>
       <main>
