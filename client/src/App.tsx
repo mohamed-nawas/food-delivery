@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import PrivateRoute from './routes/PrivateRoute';
 import Home from './pages/Home';
 

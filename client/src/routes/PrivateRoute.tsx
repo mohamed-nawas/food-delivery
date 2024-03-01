@@ -1,8 +1,12 @@
-import React from 'react';
+import * as React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { useAppSelector } from '../redux/hooks';
 
-export default function PrivateRoute({ component: Component, ...rest }) {
+interface PrivateRouteProps {
+  component: React.ComponentType<any>;
+}
+
+export default function PrivateRoute({ component: Component, ...rest }: PrivateRouteProps) {
   const token = useAppSelector((state) => state.auth.token);
 
   React.useEffect(() => {
