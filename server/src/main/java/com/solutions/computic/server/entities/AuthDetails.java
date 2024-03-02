@@ -12,6 +12,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Transient;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +21,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @Getter
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class AuthDetails {
 
     @Transient
@@ -34,7 +37,7 @@ public class AuthDetails {
     private String name;
     @Column(nullable = false)
     private String email;
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String pwd;
 
     public AuthDetails(SignupRequestDto dto) {
@@ -52,4 +55,8 @@ public class AuthDetails {
         this.email = authDetails.getEmail();
         this.pwd = authDetails.getPwd();
     }
+
+    public void setName(String name) { this.name = name; }
+
+    public void setEmail(String email) { this.email = email; }
 }
