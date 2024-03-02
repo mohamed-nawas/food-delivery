@@ -17,7 +17,6 @@ export default function OAuth2RedirectHandler(props: OAuth2RedirectHandlerProps)
 
     if(getUrlParameter('token')) {
         dipatch(authActions.login(getUrlParameter('token')));
-        debugger;
         return <Redirect to={'/'} />;
     } else {
         return <Redirect to={'/login'} />;
