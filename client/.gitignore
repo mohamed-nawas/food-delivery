@@ -7,3 +7,5 @@ dist-ssr
 coverage/
 .vscode/
 .idea/
+package-lock.json
+yarn.lock
