@@ -23,16 +23,20 @@ const useSignin = (): [SigninState, SigninHandlers] => {
             if (isMounted.current) {
                 setState((prevState) => ({ ...prevState, successMsg: "", errorMsg: "" }))
             }
-        }, 2000);
+        }, 5000);
 
         return () => { isMounted.current = false };
     }, [state.errorMsg, state.successMsg]);
 
     React.useEffect(() => {
+        isMounted.current = true;
+
         const error = location.state && location.state.error;
         if (error) {
             setState((prevState) => ({...prevState, errorMsg: error}));
         }
+
+        return () => { isMounted.current = false };
     }, [location.state]);
 
     const handleEmailChange: SigninHandlers["handleEmailChange"] = (e) => {
