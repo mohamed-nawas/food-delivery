@@ -17,7 +17,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.solutions.computic.server.configs.filters.JwtAndLoginFilter;
-import com.solutions.computic.server.security.oauth2.CustomOAuth2UserService;
 import com.solutions.computic.server.security.oauth2.HttpCookieOAuth2AuthorizationRequestRepository;
 import com.solutions.computic.server.security.oauth2.OAuth2AuthenticationSuccessHandler;
 import com.solutions.computic.server.security.oauth2.OAuth2AuthenticationFailureHandler;
@@ -28,17 +27,14 @@ public class WebSecurityConfig {
 
     private final CustomUserDetailsService userDetailsService;
     private final JwtAndLoginFilter jwtAndLoginFilter;
-    private final CustomOAuth2UserService customOAuth2UserService;
     private final OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler;
     private final OAuth2AuthenticationFailureHandler oAuth2AuthenticationFailureHandler;
 
     @Autowired
     public WebSecurityConfig(CustomUserDetailsService userDetailsService, JwtAndLoginFilter jwtAndLoginFilter,
-    CustomOAuth2UserService customOAuth2UserService, OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler,
-    OAuth2AuthenticationFailureHandler oAuth2AuthenticationFailureHandler) {
+    OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler, OAuth2AuthenticationFailureHandler oAuth2AuthenticationFailureHandler) {
         this.userDetailsService = userDetailsService;
         this.jwtAndLoginFilter = jwtAndLoginFilter;
-        this.customOAuth2UserService = customOAuth2UserService;
         this.oAuth2AuthenticationSuccessHandler = oAuth2AuthenticationSuccessHandler;
         this.oAuth2AuthenticationFailureHandler = oAuth2AuthenticationFailureHandler;
     }
@@ -84,7 +80,6 @@ public class WebSecurityConfig {
                         .authorizationRequestRepository(cookieAuthorizationRequestRepository());
                     })
                     .redirectionEndpoint(redirectionEndpoint -> redirectionEndpoint.baseUri("/oauth2/callback/*"))
-                    .userInfoEndpoint(userInfoEndpoint -> userInfoEndpoint.userService(customOAuth2UserService))
                     .successHandler(oAuth2AuthenticationSuccessHandler)
                     .failureHandler(oAuth2AuthenticationFailureHandler);
                 })

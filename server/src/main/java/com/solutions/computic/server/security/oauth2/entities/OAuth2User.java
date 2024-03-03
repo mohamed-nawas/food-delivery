@@ -1,5 +1,7 @@
 package com.solutions.computic.server.security.oauth2.entities;
 
+import java.util.UUID;
+
 import com.solutions.computic.server.entities.AuthDetails;
 import com.solutions.computic.server.security.oauth2.enums.AuthProvider;
 
@@ -8,11 +10,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@NoArgsConstructor
 @Getter
 @Setter
 public class OAuth2User extends AuthDetails {
@@ -23,4 +23,8 @@ public class OAuth2User extends AuthDetails {
     private AuthProvider provider;
     @Column
     private String providerId;
+
+    public OAuth2User() {
+        this.id = AUTH_ID_PREFIX + UUID.randomUUID();
+    }
 }

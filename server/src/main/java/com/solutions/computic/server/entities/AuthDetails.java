@@ -25,12 +25,12 @@ import lombok.NoArgsConstructor;
 public class AuthDetails {
 
     @Transient
-    private static final String AUTH_ID_PREFIX = "AID";
+    protected static final String AUTH_ID_PREFIX = "AID";
     @Transient
     private static final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
     @Id
-    private String id;
+    protected String id;
     @Enumerated(EnumType.STRING)
     private RoleType roleType;
     @Column(nullable = false)

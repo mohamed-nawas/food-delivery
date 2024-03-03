@@ -7,12 +7,15 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.solutions.computic.server.exceptions.FoodDeliveryException;
+import com.solutions.computic.server.security.oauth2.exceptions.OAuth2AuthenticationProcessingException;
 import com.solutions.computic.server.security.oauth2.utils.CookieUtils;
 
 import jakarta.servlet.ServletException;
@@ -28,17 +31,28 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
     private final List<String> authorizedRedirectUris;
     private final TokenProvider tokenProvider;
     private final HttpCookieOAuth2AuthorizationRequestRepository httpCookieOAuth2AuthorizationRequestRepository;
+    private final CustomOAuth2UserService customOAuth2UserService;
 
     @Autowired
     public OAuth2AuthenticationSuccessHandler(@Value("${authorizedRedirectUris}") List<String> authorizedRedirectUris, TokenProvider tokenProvider,
-    HttpCookieOAuth2AuthorizationRequestRepository httpCookieOAuth2AuthorizationRequestRepository) {
+    CustomOAuth2UserService customOAuth2UserService, HttpCookieOAuth2AuthorizationRequestRepository httpCookieOAuth2AuthorizationRequestRepository) {
         this.authorizedRedirectUris = authorizedRedirectUris;
         this.tokenProvider = tokenProvider;
         this.httpCookieOAuth2AuthorizationRequestRepository = httpCookieOAuth2AuthorizationRequestRepository;
+        this.customOAuth2UserService = customOAuth2UserService;
     }
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+        if (authentication instanceof OAuth2AuthenticationToken) {
+            var oAuth2AuthenticationToken = (OAuth2AuthenticationToken) authentication;
+            try {
+                customOAuth2UserService.processOAuth2User(oAuth2AuthenticationToken.getAuthorizedClientRegistrationId(), oAuth2AuthenticationToken.getPrincipal());
+            } catch (OAuth2AuthenticationProcessingException e) {
+                throw new AuthenticationServiceException(e.getMessage());
+            }
+        }
+
         String targetUrl = determineTargetUrl(request, response, authentication);
 
         if (response.isCommitted()) {
