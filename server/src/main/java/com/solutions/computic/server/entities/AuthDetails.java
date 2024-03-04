@@ -4,7 +4,6 @@ import java.util.UUID;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.solutions.computic.server.dtos.request.SignupRequestDto;
 import com.solutions.computic.server.enums.RoleType;
 
 import jakarta.persistence.Column;
@@ -40,11 +39,11 @@ public class AuthDetails {
     @Column(nullable = true)
     private String pwd;
 
-    public AuthDetails(SignupRequestDto dto) {
+    public AuthDetails(String name, String email, String pwd) {
         this.id = AUTH_ID_PREFIX + UUID.randomUUID();
-        this.name = dto.getName();
-        this.email = dto.getEmail();
-        this.pwd = bCryptPasswordEncoder.encode(dto.getPwd());
+        this.name = name;
+        this.email = email;
+        this.pwd = bCryptPasswordEncoder.encode(pwd);
         this.roleType = RoleType.USER;
     }
 

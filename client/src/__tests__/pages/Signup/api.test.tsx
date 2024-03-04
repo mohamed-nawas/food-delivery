@@ -29,7 +29,7 @@ describe('signup function', () => {
     };
 
     mock
-      .onPost('http://localhost:8080/food-delivery/api/v1/auth/signup')
+      .onPost(`http://localhost:8080/food-delivery/api/v1/auth/signup?name=${name}&email=${email}&pwd=${pwd}`)
       .reply(200, responseData);
 
     const result = await signup(name, email, pwd);
@@ -55,7 +55,7 @@ describe('signup function', () => {
     };
 
     mock
-      .onPost('http://localhost:8080/food-delivery/api/v1/auth/signup')
+      .onPost(`http://localhost:8080/food-delivery/api/v1/auth/signup?name=${name}&email=${email}&pwd=${pwd}`)
       .reply(400, errorResponseData);
 
     try {
@@ -72,7 +72,7 @@ describe('signup function', () => {
     const pwd = 'password';
 
     mock
-      .onPost('http://localhost:8080/food-delivery/api/v1/auth/signup')
+      .onPost(`http://localhost:8080/food-delivery/api/v1/auth/signup?name=${name}&email=${email}&pwd=${pwd}`)
       .networkError();
 
     try {
