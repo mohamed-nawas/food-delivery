@@ -5,7 +5,6 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.solutions.computic.server.dtos.request.SignupRequestDto;
 import com.solutions.computic.server.entities.AuthDetails;
 import com.solutions.computic.server.exceptions.FoodDeliveryException;
 import com.solutions.computic.server.exceptions.UserAlreadyExistsException;
@@ -23,13 +22,13 @@ public class AuthService {
         this.repository = authRepository;
     }
 
-    public AuthDetails createUser(SignupRequestDto dto) {
+    public AuthDetails createUser(String name, String email, String password) {
         try {
-            var optionalUser = repository.findByEmail(dto.getEmail());
+            var optionalUser = repository.findByEmail(email);
             if (optionalUser.isPresent()) {
                 throw new UserAlreadyExistsException("User already exists in DB");
             }
-            var user = new AuthDetails(dto);
+            var user = new AuthDetails(name, email, password);
             return repository.save(user);
         } catch (DataAccessException e) {
             throw new FoodDeliveryException("Error occurred when creating user in DB", e);

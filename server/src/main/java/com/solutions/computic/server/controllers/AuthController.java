@@ -4,12 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.solutions.computic.server.dtos.request.SignupRequestDto;
 import com.solutions.computic.server.dtos.response.TokenResponseDto;
 import com.solutions.computic.server.entities.SpringSecurityAuthDetails;
 import com.solutions.computic.server.enums.ErrorResponseStatusType;
@@ -38,13 +36,15 @@ public class AuthController extends Controller {
         this.jwtService = jwtService;
     }
 
-    @PostMapping(path = "/signup", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ResponseWrapper> signUp(@RequestBody SignupRequestDto requestDto) {
+    @PostMapping(path = "/signup", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ResponseWrapper> signUp(@RequestParam(name = "name") String name, @RequestParam(name = "email") String email,
+    @RequestParam(name = "pwd") String pwd) {
         try {
-            if (!requestDto.isRequiredAvailable())
+            if (name == null || name.trim().isEmpty() || email == null || email.trim().isEmpty() || pwd == null || pwd.trim().isEmpty()) {
                 return getBadRequestResponse(ErrorResponseStatusType.MISSING_REQUIRED_FIELDS);
+            }
 
-            var user = service.createUser(requestDto);
+            var user = service.createUser(name, email, pwd);
             var authUser = new SpringSecurityAuthDetails(user);
             var token = jwtService.generateToken(authUser);
             var responseDto = new TokenResponseDto(user, token);
@@ -52,10 +52,10 @@ public class AuthController extends Controller {
             log.debug("Successfully create the user: {}", responseDto.toLogJson());
             return getSuccessResponse(SuccessResponseStatusType.SIGN_UP, responseDto);
         } catch (UserAlreadyExistsException e) {
-            log.error("User Already exists for email: {}", requestDto.getEmail(), e);
+            log.error("User Already exists for email: {}", email, e);
             return getBadRequestResponse(ErrorResponseStatusType.USER_ALREADY_EXISTS);
         } catch (FoodDeliveryException e) {
-            log.error("Error occurred during signup the user for email: {}", requestDto.getEmail(), e);
+            log.error("Error occurred during signup the user for email: {}", email, e);
             return getInternalServerErrorResponse();
         }
     }

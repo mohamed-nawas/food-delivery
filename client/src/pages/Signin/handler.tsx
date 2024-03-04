@@ -2,10 +2,11 @@ import * as React from "react";
 import * as apis from './api';
 import { useAppDispatch } from '../../redux/hooks';
 import { authActions} from '../../redux/auth/authSlice';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const useSignin = (): [SigninState, SigninHandlers] => {
     const history = useHistory();
+    const location = useLocation<LocationState>();
     const dispatch = useAppDispatch();
     const isMounted = React.useRef<boolean>();
     const [state, setState] = React.useState<SigninState>({
@@ -22,10 +23,21 @@ const useSignin = (): [SigninState, SigninHandlers] => {
             if (isMounted.current) {
                 setState((prevState) => ({ ...prevState, successMsg: "", errorMsg: "" }))
             }
-        }, 2000);
+        }, 5000);
 
         return () => { isMounted.current = false };
     }, [state.errorMsg, state.successMsg]);
+
+    React.useEffect(() => {
+        isMounted.current = true;
+
+        const error = location.state && location.state.error;
+        if (error) {
+            setState((prevState) => ({...prevState, errorMsg: error}));
+        }
+
+        return () => { isMounted.current = false };
+    }, [location.state]);
 
     const handleEmailChange: SigninHandlers["handleEmailChange"] = (e) => {
         setState((prevState) => ({ ...prevState, email: e.target.value }));
@@ -60,6 +72,10 @@ interface SigninHandlers {
     handleEmailChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     handlePwdChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     handleSubmit: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+interface LocationState {
+    error?: string;
 }
 
 export default useSignin;
