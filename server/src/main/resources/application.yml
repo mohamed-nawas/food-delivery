@@ -39,7 +39,7 @@ accessControl:
   allowedOrigin: "http://localhost:3000"
   allowedMethods: GET,POST,PUT,PATCH,DELETE,OPTIONS
   maxAge: 3600
-  allowedHeaders: "*"
+  allowedHeaders: "Content-Type"
 
 # security
 token:
