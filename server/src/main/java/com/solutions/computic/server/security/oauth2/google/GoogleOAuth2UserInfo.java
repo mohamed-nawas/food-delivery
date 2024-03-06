@@ -1,6 +1,8 @@
-package com.solutions.computic.server.security.oauth2;
+package com.solutions.computic.server.security.oauth2.google;
 
 import java.util.Map;
+
+import com.solutions.computic.server.security.oauth2.OAuth2UserInfo;
 
 public class GoogleOAuth2UserInfo extends OAuth2UserInfo {
 

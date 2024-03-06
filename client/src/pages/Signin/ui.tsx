@@ -1,5 +1,6 @@
 import * as React from "react";
 import GoogleAuthUI from "../Social Auth/Google Auth/ui";
+import FacebookAuthUI from "../Social Auth/Facebook Auth/ui";
 
 const SigninUI = (props: SigninUIProps) => {
     return (
@@ -16,6 +17,7 @@ const SigninUI = (props: SigninUIProps) => {
                     <p className="text-center text-lg font-medium">Sign in to the account</p>
 
                     <GoogleAuthUI />
+                    <FacebookAuthUI />
                     <div className="flex items-center">
                         <hr className="flex-grow border-t border-gray-800" />
                         <p className="mx-4 text-sm font-medium text-gray-800 dark:text-white"> Or continue with email </p>
