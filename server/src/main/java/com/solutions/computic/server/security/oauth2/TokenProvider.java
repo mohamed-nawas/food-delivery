@@ -11,7 +11,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
+import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.stereotype.Service;
+
+import com.solutions.computic.server.security.oauth2.facebook.FacebookOAuth2User;
+import com.solutions.computic.server.security.oauth2.google.GoogleOAuth2User;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -39,18 +43,28 @@ public class TokenProvider {
     }
 
     public String createToken(Authentication authentication) {
-        // UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
-
-        DefaultOidcUser oidcUser = (DefaultOidcUser) authentication.getPrincipal();
+        CustomOAuth2User customOAuth2User = null;
+        if (authentication.getPrincipal() instanceof DefaultOidcUser) {
+            DefaultOidcUser oidcUser = (DefaultOidcUser) authentication.getPrincipal();
+            customOAuth2User = new GoogleOAuth2User(oidcUser);
+        }
+        if (authentication.getPrincipal() instanceof DefaultOAuth2User) {
+            DefaultOAuth2User oAuth2User = (DefaultOAuth2User) authentication.getPrincipal();
+            customOAuth2User = new FacebookOAuth2User(oAuth2User);
+        }
         List<GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
-        UserPrincipal userPrincipal = new UserPrincipal(oidcUser.getSubject(), oidcUser.getEmail(), "", authorities);
-        userPrincipal.setAttributes(oidcUser.getAttributes());
+        
+        if (customOAuth2User == null) {
+            throw new IllegalStateException("customOAuth2User cannot be null");
+        }
+
+        UserPrincipal userPrincipal = new UserPrincipal(customOAuth2User.getId(), customOAuth2User.getEmail(), "", authorities);
+        userPrincipal.setAttributes(customOAuth2User.getAttributes());
 
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + tokenExpirationMs);
 
         return Jwts.builder()
-                // .setSubject((userPrincipal.getId()))
                 .setSubject(userPrincipal.getEmail())
                 .setIssuedAt(new Date())
                 .setExpiration(expiryDate)

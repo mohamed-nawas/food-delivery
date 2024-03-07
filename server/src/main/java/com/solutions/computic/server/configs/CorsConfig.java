@@ -23,20 +23,24 @@ public class CorsConfig implements Filter {
     private static final String ACCESS_CONTROL_ALLOW_METHODS = "Access-Control-Allow-Methods";
     private static final String ACCESS_CONTROL_MAX_AGE = "Access-Control-Max-Age";
     private static final String ACCESS_CONTROL_ALLOW_HEADERS = "Access-Control-Allow-Headers";
+    private static final String ACCESS_CONTROL_ALLOW_CREDENTIALS = "Access-Control-Allow-Credentials";
     private static final String OPTIONS = "OPTIONS";
     private final String allowedOrigins;
     private final String allowedMethods;
     private final String maxAge;
     private final String allowedHeaders;
+    private final String allowCredentials;
 
     public CorsConfig(@Value("${accessControl.allowedOrigin}") String allowedOrigins,
             @Value("${accessControl.allowedMethods}") String allowedMethods,
             @Value("${accessControl.maxAge}") String maxAge,
-            @Value("${accessControl.allowedHeaders}") String allowedHeaders) {
+            @Value("${accessControl.allowedHeaders}") String allowedHeaders,
+            @Value("${accessControl.allowCredentials}") String allowCredentials) {
         this.allowedOrigins = allowedOrigins;
         this.allowedMethods = allowedMethods;
         this.maxAge = maxAge;
         this.allowedHeaders = allowedHeaders;
+        this.allowCredentials = allowCredentials;
     }
 
     @Override
@@ -49,6 +53,7 @@ public class CorsConfig implements Filter {
         response.setHeader(ACCESS_CONTROL_ALLOW_METHODS, allowedMethods);
         response.setHeader(ACCESS_CONTROL_MAX_AGE, maxAge);
         response.setHeader(ACCESS_CONTROL_ALLOW_HEADERS, allowedHeaders);
+        response.setHeader(ACCESS_CONTROL_ALLOW_CREDENTIALS, allowCredentials);
 
         if (OPTIONS.equalsIgnoreCase(request.getMethod())) {
             response.setStatus(HttpServletResponse.SC_OK);

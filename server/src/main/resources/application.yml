@@ -28,13 +28,19 @@ spring:
             client-secret: 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
             redirectUri: http://localhost:8080/food-delivery/oauth2/callback/{registrationId}
             scope: openid,profile,email
+          facebook:
+            client-id: 1150906372490228
+            client-secret: 9fb36d64f50b1e548c666702341ec1e9
+            redirectUri: http://localhost:8080/food-delivery/oauth2/callback/{registrationId}
+            scope: email,public_profile
 
 # cors
 accessControl:
-  allowedOrigin: "*"
+  allowedOrigin: http://localhost:3000
   allowedMethods: GET,POST,PUT,PATCH,DELETE,OPTIONS
   maxAge: 3600
-  allowedHeaders: "*"
+  allowedHeaders: Content-Type
+  allowCredentials: true
 
 # security
 token:
