@@ -33,6 +33,11 @@ spring:
             client-secret: 9fb36d64f50b1e548c666702341ec1e9
             redirectUri: http://localhost:8080/food-delivery/oauth2/callback/{registrationId}
             scope: email,public_profile
+          github:
+            client-id: 5fd73f978a1cba485e68
+            client-secret: d6a0087845bcc8b74c9560797cb272da716e076c
+            redirectUri: http://localhost:8080/food-delivery/oauth2/callback/{registrationId}
+            scope: read:user,user:email
 
 # cors
 accessControl:
