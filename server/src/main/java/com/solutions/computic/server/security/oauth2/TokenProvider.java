@@ -4,6 +4,7 @@ import java.security.Key;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,6 +16,7 @@ import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.stereotype.Service;
 
 import com.solutions.computic.server.security.oauth2.facebook.FacebookOAuth2User;
+import com.solutions.computic.server.security.oauth2.github.GithubOAuth2User;
 import com.solutions.computic.server.security.oauth2.google.GoogleOAuth2User;
 
 import io.jsonwebtoken.Claims;
@@ -50,7 +52,12 @@ public class TokenProvider {
         }
         if (authentication.getPrincipal() instanceof DefaultOAuth2User) {
             DefaultOAuth2User oAuth2User = (DefaultOAuth2User) authentication.getPrincipal();
-            customOAuth2User = new FacebookOAuth2User(oAuth2User);
+            Map<String, Object> attributes = oAuth2User.getAttributes();
+            if (attributes.containsKey("login")) {
+                customOAuth2User = new GithubOAuth2User(oAuth2User);
+            } else {
+                customOAuth2User = new FacebookOAuth2User(oAuth2User);
+            }
         }
         List<GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
         
