@@ -1,12 +1,13 @@
 import * as React from 'react';
 
 import CustomLink from '../components/CustomLink';
+import AdminDashboardHeader from '../components/admin-dashboard/Header';
 
 export default function Home(): JSX.Element {
   return (
     <>
       <main>
-        <section className='bg-dark'>
+        {/* <section className='bg-dark'>
           <div className='flex flex-col items-center justify-center min-h-screen text-white layout'>
             <CustomLink href='https://github.com/theodorusclarence/vite-react-tailwind-starter'>
               <h1>Vite React Tailwind Starter</h1>
@@ -28,7 +29,8 @@ export default function Home(): JSX.Element {
               </CustomLink>
             </footer>
           </div>
-        </section>
+        </section> */}
+        <AdminDashboardHeader />
       </main>
     </>
   );
