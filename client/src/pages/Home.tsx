@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import CustomLink from '../components/CustomLink';
-import AdminDashboardHeader from '../components/admin-dashboard/Header';
+import AdminDashboard from './AdminDashboard';
 
 export default function Home(): JSX.Element {
   return (
@@ -30,7 +30,7 @@ export default function Home(): JSX.Element {
             </footer>
           </div>
         </section> */}
-        <AdminDashboardHeader />
+        <AdminDashboard />
       </main>
     </>
   );
