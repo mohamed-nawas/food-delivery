@@ -6,8 +6,8 @@ import AdminDashboard from './AdminDashboard';
 export default function Home(): JSX.Element {
   return (
     <>
-      <main>
-        {/* <section className='bg-dark'>
+      {/* <main>
+        <section className='bg-dark'>
           <div className='flex flex-col items-center justify-center min-h-screen text-white layout'>
             <CustomLink href='https://github.com/theodorusclarence/vite-react-tailwind-starter'>
               <h1>Vite React Tailwind Starter</h1>
@@ -29,9 +29,9 @@ export default function Home(): JSX.Element {
               </CustomLink>
             </footer>
           </div>
-        </section> */}
-        <AdminDashboard />
-      </main>
+        </section>
+      </main> */}
+      <AdminDashboard />
     </>
   );
 }
