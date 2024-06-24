@@ -1,0 +1,48 @@
+@use "../shared/media-queries" as screens;
+
+.feed-me__github-auth {
+    &__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 1rem;
+
+        button {
+            display: flex;
+            width: 100%;
+            justify-content: flex-start;
+            align-items: center;
+            column-gap: 1rem;
+            background-color: white;
+            color: rgba(31, 41, 55, 1);
+            font-size: 0.875rem;
+            font-weight: 500;
+            // padding: 0.5rem 1.5rem;
+            padding: 0.5rem 0 0.5rem 8rem;
+            text-align: center;
+            border: 1px solid #cbd5e0;
+            border-radius: 0.375rem;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+            &.dark-mode {
+                background-color: #4b5563;
+                color: white;
+            }
+
+            &:hover {
+                background-color: #e5e7eb;
+            }
+
+            &:focus {
+                outline: none;
+                box-shadow: 0 0 0 2px rgba(65, 81, 105, 0.5);
+            }
+
+            svg {
+                height: 1.5rem;
+                width: 1.5rem;
+                margin-right: 0.5rem;
+            }
+        }
+    }
+}
