@@ -31,14 +31,25 @@
             @include screens.max-xs {
                 padding-left: 1.5rem;
             }
-
-            &.dark-mode {
-                background-color: #4b5563;
-                color: white;
+            
+            @media (prefers-color-scheme: dark) {
+                color: #ffffff;
+                background-color: #4460a0;
             }
 
             &:hover {
                 background-color: #e5e7eb;
+
+                @media (prefers-color-scheme: dark) {
+                    color: rgba(31, 41, 55, 1);
+                    background-color: #ffffff;
+
+                    svg {
+                        g {
+                            fill: #4460a0;
+                        }
+                    }
+                }
             }
 
             &:focus {
@@ -50,6 +61,14 @@
                 height: 1.5rem;
                 width: 1.5rem;
                 margin-right: 0.5rem;
+                
+                g {
+                    fill: #4460a0;
+
+                    @media (prefers-color-scheme: dark) {
+                        fill: #ffffff;
+                    }
+                }
             }
         }
     }
