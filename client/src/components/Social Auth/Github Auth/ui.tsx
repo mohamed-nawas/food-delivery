@@ -14,14 +14,11 @@ export default function GithubAuthUI(props: GithubAuthUIProps) {
   };
 
   return (
-    <div className='flex items-center justify-center'>
+    <div className='feed-me__github-auth__container'>
       <button
         onClick={handleButtonClick}
-        className='flex w-full justify-center items-center bg-white dark:bg-gray-900 border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 
-    dark:text-white hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500'
       >
         <svg
-          className='h-6 w-6 mr-2'
           xmlns='http://www.w3.org/2000/svg'
           xmlnsXlink='http://www.w3.org/1999/xlink'
           viewBox='0 0 73 73'

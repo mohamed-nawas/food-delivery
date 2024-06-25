@@ -1,0 +1,94 @@
+@use "sass:map";
+
+$screen-xs: 380px;
+$screen-sm: 640px;
+$screen-md: 768px;
+$screen-lg: 1024px;
+$screen-xl: 1280px;
+
+/* Media query mixins */
+// Min media queries
+@mixin min-xs {
+    @media (min-width: $screen-xs) { @content; }
+}
+
+@mixin min-sm {
+    @media (min-width: $screen-sm) { @content; }
+}
+
+@mixin min-md {
+    @media (min-width: $screen-md) { @content; }
+}
+
+@mixin min-lg {
+    @media (min-width: $screen-lg) { @content; }
+}
+
+@mixin min-xl {
+    @media (min-width: $screen-xl) { @content; }
+}
+
+// Max media queries
+@mixin max-xs {
+    @media (max-width: #{$screen-xs - 1}) { @content; }
+}
+
+@mixin max-sm {
+    @media (max-width: #{$screen-sm - 1}) { @content; }
+}
+
+@mixin max-md {
+    @media (max-width: #{$screen-md - 1}) { @content; }
+}
+
+@mixin max-lg {
+    @media (max-width: #{$screen-lg - 1}) { @content; }
+}
+
+@mixin max-xl {
+    @media (max-width: #{$screen-xl - 1}) { @content; }
+}
+
+/* Media query range - xs */
+@mixin min-xs-max-sm {
+    @media only screen and (min-width: $screen-xs) and (max-width: #{$screen-sm - 1}) { @content; }
+}
+
+@mixin min-xs-max-md {
+    @media only screen and (min-width: $screen-xs) and (max-width: #{$screen-md - 1}) { @content; }
+}
+
+@mixin min-xs-max-lg {
+    @media only screen and (min-width: $screen-xs) and (max-width: #{$screen-lg - 1}) { @content; }
+}
+
+@mixin min-xs-max-xl {
+    @media only screen and (min-width: $screen-xs) and (max-width: #{$screen-xl - 1}) { @content; }
+}
+
+/* Media query range - sm */
+@mixin min-sm-max-md {
+    @media only screen and (min-width: $screen-sm) and (max-width: #{$screen-md - 1}) { @content; }
+}
+
+@mixin min-sm-max-lg {
+    @media only screen and (min-width: $screen-sm) and (max-width: #{$screen-lg - 1}) { @content; }
+}
+
+@mixin min-sm-max-xl {
+    @media only screen and (min-width: $screen-sm) and (max-width: #{$screen-xl - 1}) { @content; }
+}
+
+/* Media query range - md */
+@mixin min-md-max-lg {
+    @media only screen and (min-width: $screen-md) and (max-width: #{$screen-lg - 1}) { @content; }
+}
+
+@mixin min-md-max-xl {
+    @media only screen and (min-width: $screen-md) and (max-width: #{$screen-xl - 1}) { @content; }
+}
+
+/* Media query range - lg */
+@mixin min-lg-max-xl {
+    @media only screen and (min-width: $screen-lg) and (max-width: #{$screen-xl - 1}) { @content; }
+}

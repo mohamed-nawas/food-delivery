@@ -24,18 +24,18 @@ spring:
       client:
         registration:
           google:
-            client-id: ${GOOGLE_CLIENT_ID}
-            client-secret: ${GOOGLE_CLIENT_SECRET}
+            client-id: ${GOOGLE_CLIENT_ID:google-client-id}
+            client-secret: ${GOOGLE_CLIENT_SECRET:google-client-secret}
             redirectUri: http://localhost:8080/food-delivery/oauth2/callback/{registrationId}
             scope: openid,profile,email
           facebook:
-            client-id: ${FACEBOOK_CLIENT_ID}
-            client-secret: ${FACEBOOK_CLIENT_SECRET}
+            client-id: ${FACEBOOK_CLIENT_ID:fb-client-id}
+            client-secret: ${FACEBOOK_CLIENT_SECRET:fb-client-secret}
             redirectUri: http://localhost:8080/food-delivery/oauth2/callback/{registrationId}
             scope: email,public_profile
           github:
-            client-id: ${GITHUB_CLIENT_ID}
-            client-secret: ${GITHUB_CLIENT_SECRET}
+            client-id: ${GITHUB_CLIENT_ID:github-client-id}
+            client-secret: ${GITHUB_CLIENT_SECRET:github-client-secret}
             redirectUri: http://localhost:8080/food-delivery/oauth2/callback/{registrationId}
             scope: read:user,user:email
   profiles:
