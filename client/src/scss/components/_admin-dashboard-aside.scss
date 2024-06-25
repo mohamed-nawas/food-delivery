@@ -1,0 +1,35 @@
+@use "../shared/media-queries" as screens;
+
+.feed-me__admin-dashboard__aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 350px;
+    height: 1872px;
+    background-color: #ffffff;
+
+    @include screens.max-lg {
+        width: 50px;
+
+        > *:not(:first-child) {
+            display: none !important;
+        }
+
+        &__toggler {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 1rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("/icons/toggler-icon.svg");
+            cursor: pointer;
+
+            &:hover {
+                background-image: url("/icons/toggler-hover-icon.svg");
+            }
+        }
+    }
+}

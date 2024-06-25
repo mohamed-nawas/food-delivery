@@ -1,0 +1,36 @@
+@use "../shared/media-queries" as screens;
+
+.feed-me__admin-dashboard__aside__footer {
+    width: 245px;
+    margin-top: 3rem;
+    margin-left: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    // @include screens.max-lg {
+    //     display: none;
+    // }
+
+    &__heart {
+        color: #ff0000;
+    }
+
+    h6 {
+        font-size: 0.75rem;
+        line-height: 18px;
+        color: #969ba0;
+    }
+
+    > div > p {
+        font-size: 0.75rem;
+        line-height: 18px;
+        color: #969ba0;
+    }
+
+    p {
+        font-size: 0.875rem;
+        color: #969ba0;
+        line-height: 26px;
+    }
+}

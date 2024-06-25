@@ -1,19 +1,14 @@
 import * as React from 'react';
-import AdminDashboardHeader from '../../components/admin-dashboard/Header';
-import AdminDashboardMenu from '../../components/admin-dashboard/Menu';
-import AdminDashboardMain from '../../components/admin-dashboard/Main';
+import AdminDashboardAside from '../../components/admin-dashboard/Aside';
 
 interface AdminDashboardUIProps {}
 
 const AdminDashboardUI = (props: AdminDashboardUIProps) => {
   return (
-    <>
-      <AdminDashboardHeader />
-      <div className='flex'>
-        <AdminDashboardMenu />
-        <AdminDashboardMain />
-      </div>
-    </>
+    <main style={{display: 'flex'}}>
+      <AdminDashboardAside />
+      <p style={{marginLeft: '1rem', marginTop: '1rem'}}>Welcome to Admin Dashboard</p>
+    </main>
   );
 };
 
