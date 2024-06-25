@@ -1,6 +1,8 @@
 ## Introduction
 
 Food Delivery application with React and Spring Boot
+Application Name: Delicious Dispatch
+Application Slogan: Cuisine First At The Finish Line!
 
 ## Requirements
 
