@@ -1,6 +1,7 @@
 @use "../shared/media-queries" as screens;
 
 .feed-me__admin-dashboard__aside {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -13,7 +14,7 @@
         width: 50px;
 
         > *:not(:first-child) {
-            display: none !important;
+            display: none;
         }
 
         &__toggler {
