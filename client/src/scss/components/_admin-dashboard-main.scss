@@ -5,11 +5,11 @@
     padding: 3rem 1rem;
 
     &__header {
-        // border: 1px solid green;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        column-gap: 2rem;
 
         &__profile {
             display: flex;
@@ -17,6 +17,8 @@
             align-items: center;
             justify-content: flex-end;
             column-gap: 1.25rem;
+            border-left: 1px solid #d0d6de;
+            padding-left: 40px;
 
             p {
                 color: #464255;
@@ -114,6 +116,35 @@
                     place-items: center;
                 }
             }
+        }
+
+        &__search-wrapper {
+            flex: 1;
+            display: flex;
+            position: relative;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 25%;
+                right: 28px;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-image: url("/icons/search-icon.svg");
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+
+        &__search {
+            flex: 1;
+            height: 56px;
+            border-radius: 0.75rem;
+            padding: 28px;
+
+            // &:focus {
+            //     border: 1px solid gray !important;
+            // }
         }
     }
 }
