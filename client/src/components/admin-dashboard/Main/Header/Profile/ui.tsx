@@ -8,7 +8,7 @@ interface AdminDashboardMainHeaderProfileUIProps {
 const AdminDashboardMainHeaderProfileUI = (props: AdminDashboardMainHeaderProfileUIProps) => {
   return (
     <section className='feed-me__admin-dashboard__main__header__profile'>
-      <p>Hello, <strong>{props.profileName ? props.profileName : 'User'}</strong></p>
+      <p>Hello, <strong>{props.profileName ? props.profileName.split(" ")[props.profileName.split(" ").length - 1] : 'User'}</strong></p>
       <div className="feed-me__admin-dashboard__main__header__profile__img-wrapper">
         {
           props.profileImgUrl 

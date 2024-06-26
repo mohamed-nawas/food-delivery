@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as apis from './api';
-import { useAppSelector } from '../../../../../redux/hooks';
+import { useAppSelector } from '../../../redux/hooks';
 
-const useAdminDashboardMainHeaderProfile = (): [AdminDashboardMainHeaderProfileState, AdminDashboardMainHeaderProfileHandlers] => {
+const useAdminDashboardMain = (): [AdminDashboardMainState, AdminDashboardMainHandlers] => {
     const isMounted = React.useRef<boolean>();
     const token = useAppSelector((state) => state.auth.token);
-    const [state, setState] = React.useState<AdminDashboardMainHeaderProfileState>({
+    const [state, setState] = React.useState<AdminDashboardMainState>({
         profileName: "",
         profileImgUrl: ""
     });
@@ -25,11 +25,11 @@ const useAdminDashboardMainHeaderProfile = (): [AdminDashboardMainHeaderProfileS
     return [state, {}];
 }
 
-interface AdminDashboardMainHeaderProfileState {
+export interface AdminDashboardMainState {
     profileName: string;
     profileImgUrl: string;
 }
 
-interface AdminDashboardMainHeaderProfileHandlers {}
+interface AdminDashboardMainHandlers {}
 
-export default useAdminDashboardMainHeaderProfile;
+export default useAdminDashboardMain;

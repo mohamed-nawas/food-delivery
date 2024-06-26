@@ -2,11 +2,9 @@ import * as React from 'react';
 import AdminDashboardMainHeaderProfile from './Profile';
 import AdminDashboardMainHeaderNotificationItem from './NotificationItem';
 import AdminDashboardMainHeaderSearch from './Search';
+import { AdminDashboardMainUIProps } from '../ui';
 
-interface AdminDashboardMainHeaderUIProps {
-}
-
-const AdminDashboardMainHeaderUI = (props: AdminDashboardMainHeaderUIProps) => {
+const AdminDashboardMainHeaderUI = (props: AdminDashboardMainUIProps) => {
   return (
     <header className='feed-me__admin-dashboard__main__header'>
       <AdminDashboardMainHeaderSearch />
@@ -17,7 +15,7 @@ const AdminDashboardMainHeaderUI = (props: AdminDashboardMainHeaderUIProps) => {
           ))
         }
       </section>
-      <AdminDashboardMainHeaderProfile />
+      <AdminDashboardMainHeaderProfile {...props} />
     </header>
   );
 };

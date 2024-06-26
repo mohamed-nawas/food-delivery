@@ -147,4 +147,61 @@
             // }
         }
     }
+
+    &__content {
+        h3 {
+            font-size: 2rem;
+            color: #464255;
+        }
+
+        p {
+            font-size: 18px;
+            color: #a3a3a3;
+            margin-top: 1rem;
+        }
+    }
+
+    &__filter-card {
+        display: flex;
+        align-items: center;
+        width: 293px;
+        height: 76px;
+        border-radius: 0.75rem;
+        background-color: #ffffff;
+        padding: 0 1.625rem;
+        column-gap: 0.5rem;
+        cursor: pointer;
+
+        &__calender-wrap {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 15px;
+            background-color: rgba(45, 156, 219, 0.15);
+            display: grid;
+            place-content: center;
+
+            &__calender-icon {
+                background-repeat: no-repeat;
+                background-size: cover;
+                width: 25px;
+                height: 25px;
+                background-image: url("/icons/calender-icon.svg");
+            }
+        }
+
+        &__date-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        &__arrow-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("/icons/down-arrow-icon.svg");
+        }
+    }
 }

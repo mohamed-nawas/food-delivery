@@ -1,13 +1,13 @@
 import * as React from 'react';
 import AdminDashboardMainHeaderProfileUI from './ui';
-import useAdminDashboardMainHeaderProfile from './handler';
+import { AdminDashboardMainState } from '../../handler';
 
-const AdminDashboardMainHeaderProfile = () => {
-    const [state, handlers] = useAdminDashboardMainHeaderProfile();
+const AdminDashboardMainHeaderProfile = (props: AdminDashboardMainState) => {
+    // const [state, handlers] = useAdminDashboardMainHeaderProfile();
 
     return (
-        <AdminDashboardMainHeaderProfileUI {...state} {...handlers} />
-        // <AdminDashboardMainHeaderProfileUI />
+        // <AdminDashboardMainHeaderProfileUI {...state} {...handlers} />
+        <AdminDashboardMainHeaderProfileUI {...props} />
     )
 }
 

@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios";
-import { UserApiErrorResponse, UserApiSuccessResponse } from '../../../../../types/userTypes';
-import { API } from '../../../../../services/api';
+import { UserApiErrorResponse, UserApiSuccessResponse } from '../../../types/userTypes';
+import { API } from '../../../services/api';
 
 export const getUserDetails = (token: string) => {
     return new Promise<UserApiSuccessResponse>(async (res, rej) => {
