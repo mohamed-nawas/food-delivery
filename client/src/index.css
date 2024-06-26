@@ -4,33 +4,78 @@
 
 @layer base {
   /* inter-regular - latin */
-  @font-face {
+  /* @font-face {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-display: optional;
     src: url('/fonts/inter-regular-webfont.woff2') format('woff2'),
       url('/fonts/inter-regular-webfont.woff') format('woff');
-  }
+  } */
 
   /* inter-500 - latin */
-  @font-face {
+  /* @font-face {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
     font-display: optional;
     src: url('/fonts/inter-medium-webfont.woff2') format('woff2'),
       url('/fonts/inter-medium-webfont.woff') format('woff');
-  }
+  } */
 
   /* inter-700 - latin */
-  @font-face {
+  /* @font-face {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
     font-display: optional;
     src: url('/fonts/inter-bold-webfont.woff2') format('woff2'),
       url('/fonts/inter-bold-webfont.woff') format('woff');
+  } */
+
+  @font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-display: optional;
+    src: url('/fonts/poppins-light-webfont.woff2') format('woff2'),
+      url('/fonts/poppins-light-webfont.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-display: optional;
+    src: url('/fonts/poppins-regular-webfont.woff2') format('woff2'),
+      url('/fonts/poppins-regular-webfont.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-display: optional;
+    src: url('/fonts/poppins-medium-webfont.woff2') format('woff2'),
+      url('/fonts/poppins-medium-webfont.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-display: optional;
+    src: url('/fonts/poppins-semibold-webfont.woff2') format('woff2'),
+      url('/fonts/poppins-semibold-webfont.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-display: optional;
+    src: url('/fonts/poppins-bold-webfont.woff2') format('woff2'),
+      url('/fonts/poppins-bold-webfont.woff') format('woff');
   }
 
   /* Write your own custom base styles here */

@@ -50,4 +50,16 @@ public class AuthService {
             throw new FoodDeliveryException("Error occurred when finding user by email and pwd from DB", e);
         }
     }
+
+    public AuthDetails findByEmail(String email) {
+        try {
+            var optionalUser = repository.findByEmail(email);
+            if (optionalUser.isEmpty()) {
+                throw new UserNotFoundException("User not found in DB");
+            }
+            return optionalUser.get();
+        } catch (DataAccessException e) {
+            throw new FoodDeliveryException("Error occurred when finding user in DB by email", e);
+        }
+    }
 }
