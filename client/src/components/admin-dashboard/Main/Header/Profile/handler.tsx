@@ -15,7 +15,7 @@ const useAdminDashboardMainHeaderProfile = (): [AdminDashboardMainHeaderProfileS
 
         apis.getUserDetails(token)
         .then((res) => {
-            if (isMounted.current) setState((prevState) => ({ ...prevState, profileName: res.data.data.name }));    //todo: complete the api modification to get profileImgUrl
+            if (isMounted.current) setState((prevState) => ({ ...prevState, profileName: res.data.data?.name }));    //todo: complete the api modification to get profileImgUrl
         })
         .catch(e => console.error(e));
 

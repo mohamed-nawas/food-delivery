@@ -1,7 +1,6 @@
 @use "../shared/media-queries" as screens;
 
 .feed-me__admin-dashboard__main {
-    // border: 1px solid red;
     flex: 1;
     padding: 3rem 1rem;
 
@@ -42,6 +41,77 @@
                     @media (prefers-color-scheme: dark) {
                         background-image: url("/images/default-profile-dark-icon.webp");
                     }
+                }
+            }
+        }
+
+        &__notification-wrapper {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            column-gap: 1.875rem;
+
+            &__notification-item {
+                cursor: pointer;
+                position: relative;
+                width: 3rem;
+                height: 3rem;
+                border-radius: 0.75rem;
+                display: grid;
+                place-items: center;
+
+                &.is-style-notification {
+                    background-color: rgba(45, 156, 219, 0.15);
+                }
+
+                &.is-style-message {
+                    background-color: rgba(45, 156, 219, 0.15);
+                }
+
+                &.is-style-orders {
+                    background-color: rgba(94, 108, 147, 0.15);
+                }
+
+                &.is-style-setting {
+                    background-color: rgba(255, 91, 91, 0.15);
+                }
+
+                &__icon {
+                    width: 1.75rem;
+                    height: 1.75rem;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+
+                    &.is-style-notification {
+                        background-image: url("/icons/bell-icon.svg");
+                    }
+
+                    &.is-style-message {
+                        background-image: url("/icons/chat-icon.svg");
+                    }
+
+                    &.is-style-orders {
+                        background-image: url("/icons/order-icon.svg");
+                    }
+
+                    &.is-style-setting {
+                        background-image: url("/icons/setting-icon.svg");
+                    }
+                }
+
+                &__count {
+                    position: absolute;
+                    top: -0.75rem;
+                    right: -0.75rem;
+                    width: 27px;
+                    height: 27px;
+                    border-radius: 50%;
+                    border: 0.25rem solid #f2f3f7;
+                    color: #ffffff;
+                    font-size: 0.75rem;
+                    line-height: 18px;
+                    display: grid;
+                    place-items: center;
                 }
             }
         }
