@@ -1,0 +1,49 @@
+@use "../shared/media-queries" as screens;
+
+.feed-me__admin-dashboard__main {
+    // border: 1px solid red;
+    flex: 1;
+    padding: 3rem 1rem;
+
+    &__header {
+        // border: 1px solid green;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        &__profile {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+            column-gap: 1.25rem;
+
+            p {
+                color: #464255;
+                font-size: 1rem;
+            }
+
+            &__img-wrapper {
+                width: 56px;
+                height: 56px;
+                border-radius: 50%;
+                padding: 0.125rem;
+                background-color: #ffffff;
+
+                &__img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-image: url("/images/default-profile-icon.webp");
+
+                    @media (prefers-color-scheme: dark) {
+                        background-image: url("/images/default-profile-dark-icon.webp");
+                    }
+                }
+            }
+        }
+    }
+}

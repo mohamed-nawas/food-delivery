@@ -13,7 +13,7 @@
     @include screens.max-lg {
         width: 50px;
 
-        > *:not(:first-child) {
+        >*:not(:first-child) {
             display: none;
         }
 
@@ -31,6 +31,240 @@
             &:hover {
                 background-image: url("/icons/toggler-hover-icon.svg");
             }
+        }
+    }
+
+    &__header {
+        width: 215px;
+        margin-top: 3rem;
+        margin-left: 3rem;
+
+        // @include screens.max-lg {
+        //     display: none;
+        // }
+
+        h1 {
+            font-weight: 700;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        &__heading {
+            color: #27ae60;
+        }
+
+        h4 {
+            font-weight: 500;
+            font-size: 1.125rem;
+            color: #b9bbbd;
+
+            text-wrap: nowrap;
+        }
+    }
+
+    &__menu {
+        margin-top: 6rem;
+        width: 260px;
+        margin-left: auto;
+        margin-right: auto;
+
+        // @include screens.max-lg {
+        //     display: none;
+        // }
+
+        li {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            height: 54px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            &:hover {
+                background-color: rgba(0, 176, 116, 0.13);
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: -0.25rem;
+                    height: 54px;
+                    width: 0.5rem;
+                    border-radius: 1rem;
+                    background-color: #00b074;
+                }
+
+                a {
+                    color: #00b074;
+                }
+
+                .feed-me__admin-dashboard__aside__menu__dashboard-icon {
+                    background-image: url("/icons/dashboard-menu-hover-icon.svg");
+                }
+
+                .feed-me__admin-dashboard__aside__menu__orders-icon {
+                    background-image: url("/icons/orders-menu-hover-icon.svg");
+                }
+
+                .feed-me__admin-dashboard__aside__menu__customers-icon {
+                    background-image: url("/icons/customers-menu-hover-icon.svg");
+                }
+
+                .feed-me__admin-dashboard__aside__menu__analytics-icon {
+                    background-image: url("/icons/analytics-menu-hover-icon.svg");
+                }
+
+                .feed-me__admin-dashboard__aside__menu__reviews-icon {
+                    background-image: url("/icons/reviews-menu-hover-icon.svg");
+                }
+
+                .feed-me__admin-dashboard__aside__menu__foods-icon {
+                    background-image: url("/icons/foods-menu-hover-icon.svg");
+                }
+
+                .feed-me__admin-dashboard__aside__menu__calender-icon {
+                    background-image: url("/icons/calender-menu-hover-icon.svg");
+                }
+
+                .feed-me__admin-dashboard__aside__menu__chat-icon {
+                    background-image: url("/icons/chat-menu-hover-icon.svg");
+                }
+
+                .feed-me__admin-dashboard__aside__menu__wallet-icon {
+                    background-image: url("/icons/wallet-menu-hover-icon.svg");
+                }
+            }
+
+        }
+
+        a {
+            color: #464255;
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        &__dashboard-icon {
+            margin-right: 1.5rem;
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("/icons/dashboard-menu-icon.svg");
+        }
+
+        &__orders-icon {
+            margin-right: 1.5rem;
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("/icons/orders-menu-icon.svg");
+        }
+
+        &__customers-icon {
+            margin-right: 1.5rem;
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("/icons/customers-menu-icon.svg");
+        }
+
+        &__analytics-icon {
+            margin-right: 1.5rem;
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("/icons/analytics-menu-icon.svg");
+        }
+
+        &__reviews-icon {
+            margin-right: 1.5rem;
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("/icons/reviews-menu-icon.svg");
+        }
+
+        &__foods-icon {
+            margin-right: 1.5rem;
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("/icons/foods-menu-icon.svg");
+        }
+
+        &__calender-icon {
+            margin-right: 1.5rem;
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("/icons/calender-menu-icon.svg");
+        }
+
+        &__chat-icon {
+            margin-right: 1.5rem;
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("/icons/chat-menu-icon.svg");
+        }
+
+        &__wallet-icon {
+            margin-right: 1.5rem;
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("/icons/wallet-menu-icon.svg");
+        }
+    }
+
+    &__footer {
+        width: 245px;
+        margin-top: 3rem;
+        margin-left: 3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        // @include screens.max-lg {
+        //     display: none;
+        // }
+
+        &__heart {
+            color: #ff0000;
+        }
+
+        h6 {
+            font-size: 0.75rem;
+            line-height: 18px;
+            color: #969ba0;
+        }
+
+        >div>p {
+            font-size: 0.75rem;
+            line-height: 18px;
+            color: #969ba0;
+        }
+
+        p {
+            font-size: 0.875rem;
+            color: #969ba0;
+            line-height: 26px;
         }
     }
 }
