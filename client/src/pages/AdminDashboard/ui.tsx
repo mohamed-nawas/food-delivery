@@ -7,7 +7,7 @@ const AdminDashboardUI = (props: AdminDashboardUIProps) => {
   return (
     <main style={{display: 'flex'}}>
       <AdminDashboardAside />
-      <p style={{marginLeft: '1rem', marginTop: '1rem'}}>Welcome to Admin Dashboard</p>
+      <section style={{ flex: 1, borderWidth: '1px', borderColor: 'red', padding: '3rem 1rem' }}>Welcome to Admin Dashboard</section>
     </main>
   );
 };

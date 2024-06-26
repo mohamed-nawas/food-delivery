@@ -10,11 +10,11 @@ export default function Routes() {
   return (
     <Router>
       <Switch>
-        {/* <Route exact path='/' component={App} />
+        <Route exact path='/' component={App} />
         <Route path='/login' component={Signin} />
         <Route path='/register' component={Signup} />
-        <Route path='/oauth2/redirect' component={OAuth2RedirectHandler} /> */}
-        <Route exact path='/' component={Home} />
+        <Route path='/oauth2/redirect' component={OAuth2RedirectHandler} />
+        {/* <Route exact path='/' component={Home} /> */}
       </Switch>
     </Router>
   );
